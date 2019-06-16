@@ -462,11 +462,11 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-   (setq configuration-layer-elpa-archives
-         '(("melpa-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/melpa/")
-           ("melpa-stable-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/melpa-stable/")
-           ("org-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/org/")
-           ("gnu-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/gnu/")))
+   ;(setq configuration-layer-elpa-archives
+   ;     '(("melpa-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/melpa/")
+   ;       ("melpa-stable-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/melpa-stable/")
+   ;       ("org-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/org/")
+   ;       ("gnu-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-load ()
