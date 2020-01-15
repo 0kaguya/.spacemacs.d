@@ -41,14 +41,11 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      helm
      (haskell :variables
-              haskell-completion-backend 'intero
               haskell-enable-hindent t
-              haskell-enable-hindent-style "johan-tibell"
-              )
+              haskell-enable-hindent-style "johan-tibell")
      agda
      (coq :variables
-          coq-compile-before-require t
-          )
+          coq-compile-before-require t)
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       ; auto-completion-enable-help-tooltip t
@@ -76,7 +73,7 @@ This function should only modify configuration layer settings."
                      spell-checking-enable-by-default nil)
      treemacs
      ;; syntax-checking
-     version-control
+     ;;version-control
      themes-megapack
      )
 
@@ -230,7 +227,7 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Monaco"
-                               :size 20
+                               :size 16
                                :weight normal
                                :width normal)
 
