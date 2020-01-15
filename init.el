@@ -77,6 +77,7 @@ This function should only modify configuration layer settings."
      treemacs
      ;; syntax-checking
      version-control
+     themes-megapack
      )
 
    ;; List of additional packages that will be installed without being
@@ -86,7 +87,8 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -208,7 +210,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-light
+   dotspacemacs-themes '(kaolin-valley-light
+                         spacemacs-light
                          spacemacs-dark)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
@@ -226,8 +229,8 @@ It should only modify the values of Spacemacs settings."
 
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 18
+   dotspacemacs-default-font '("Monaco"
+                               :size 20
                                :weight normal
                                :width normal)
 
@@ -462,11 +465,11 @@ This function is called immediately after `dotspacemacs/init', before layer
 configuration.
 It is mostly for variables that should be set before packages are loaded.
 If you are unsure, try setting them in `dotspacemacs/user-config' first."
-   ;(setq configuration-layer-elpa-archives
-   ;     '(("melpa-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/melpa/")
-   ;       ("melpa-stable-cn" . "https://mirrors4.tuna.tsinghua.edu.cn/melpa-stable/")
-   ;       ("org-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/org/")
-   ;       ("gnu-cn"   . "https://mirrors4.tuna.tsinghua.edu.cn/elpa/gnu/")))
+   (setq configuration-layer-elpa-archives
+        '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/melpa-stable/")
+          ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-load ()
@@ -488,8 +491,8 @@ before packages are loaded."
   (evil-ex-define-cmd "q" 'kill-this-buffer)
   (evil-ex-define-cmd "wq" 'evil-save-and-close)
   ;; remove prettify symbols mode from coq mode
-  (with-eval-after-load 'company-coq
-    (add-to-list 'company-coq-disabled-features 'prettify-symbols))
+  ;;(with-eval-after-load 'company-coq
+  ;;  (add-to-list 'company-coq-disabled-features 'prettify-symbols))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -506,7 +509,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(lsp-haskell lsp-mode markdown-mode dash-functional intero hlint-refactor hindent helm-hoogle haskell-snippets dante lcr company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl browse-at-remote smeargle helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode transient git-messenger git-link git-commit with-editor geiser yasnippet-snippets xterm-color shell-pop multi-term helm-company helm-c-yasnippet fuzzy eshell-z eshell-prompt-extras esh-help company-statistics company-coq company-math math-symbol-lists company auto-yasnippet yasnippet ac-ispell auto-complete proof-general treemacs-evil ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile toc-org symon string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
+   '(ansi package-build shut-up epl git commander f dash s flycheck-elsa lsp-haskell lsp-mode markdown-mode dash-functional intero hlint-refactor hindent helm-hoogle haskell-snippets dante lcr company-ghci company-ghc ghc haskell-mode company-cabal cmm-mode git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter diff-hl browse-at-remote smeargle helm-gitignore helm-git-grep gitignore-templates gitignore-mode gitconfig-mode gitattributes-mode transient git-messenger git-link git-commit with-editor geiser yasnippet-snippets xterm-color shell-pop multi-term helm-company helm-c-yasnippet fuzzy eshell-z eshell-prompt-extras esh-help company-statistics company-coq company-math math-symbol-lists company auto-yasnippet yasnippet ac-ispell auto-complete proof-general treemacs-evil ws-butler writeroom-mode winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package treemacs-projectile toc-org symon string-inflection spaceline-all-the-icons restart-emacs request rainbow-delimiters popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file nameless move-text macrostep lorem-ipsum link-hint indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent ace-link ace-jump-helm-line)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
