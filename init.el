@@ -45,6 +45,7 @@ This function should only modify configuration layer settings."
               haskell-enable-hindent-style "johan-tibell")
      agda
      (coq :variables
+          company-coq-disabled-features 'prettify-symbols
           coq-compile-before-require t)
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
@@ -490,11 +491,10 @@ before packages are loaded."
   ;; remove prettify symbols mode from coq mode
   ;;(with-eval-after-load 'company-coq
   ;;  (add-to-list 'company-coq-disabled-features 'prettify-symbols))
-  ;; set prettify symbols
   ;(add-hook 'prettify-symbols-mode-hook
   ;          (lambda ()
   ;            (setq prettify-symbols-alist
-  ;                  '(("|-" . ?⊢) ("True" . ?⊤) ("False" . ?⊥) ("->" . ?→) ("-->" . ?⟶) ("<-" . ?←) ("<--" . ?⟵) ("<->" . ?↔) ("<-->" . ?⟷) ("=>" . ?⇒) ("==>" . ?⟹) ("<==" . ?⟸) ("++>" . ?⟿) ("<++" . ?⬳) ("fun" . ?λ) ("forall" . ?∀) ("exists" . ?∃) ("/\\" . ?∧) ("\\/" . ?∨) ("~" . ?¬) ("+-" . ?±) ("<=" . ?≤) (">=" . ?≥) ("<>" . ?≠) ("*" . ?×) ("++" . ?⧺) ("nat" . ?𝓝) ("Z" . ?ℤ) ("N" . ?ℕ) ("Q" . ?ℚ) ("Real" . ?ℝ) ("bool" . ?𝔹) ("Prop" . ?𝓟)))))
+                                        ;                  '(("|-" . ?⊢) ("True" . ?⊤) ("False" . ?⊥) ("->" . ?→) ("-->" . ?⟶) ("<-" . ?←) ("<--" . ?⟵) ("<->" . ?↔) ("<-->" . ?⟷) ("=>" . ?⇒) ("==>" . ?⟹) ("<==" . ?⟸) ("++>" . ?⟿) ("<++" . ?⬳) ("fun" . ?λ) ("forall" . ?∀) ("exists" . ?∃) ("/\\" . ?∧) ("\\/" . ?∨) ("~" . ?¬) ("+-" . ?±) ("<=" . ?≤) (">=" . ?≥) ("<>" . ?≠) ("*" . ?×) ("++" . ?⧺) ("nat" . ?𝓝) ("Z" . ?ℤ) ("N" . ?ℕ) ("Q" . ?ℚ) ("Real" . ?ℝ) ("bool" . ?𝔹) ("Prop" . ?𝓟)))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
