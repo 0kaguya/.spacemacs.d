@@ -1,0 +1,3 @@
+[submodule "share/spacemacs-lean-layer"]
+	path = share/spacemacs-lean-layer
+	url = https://github.com/robkorn/spacemacs-lean-layer.git

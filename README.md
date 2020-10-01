@@ -1,13 +1,18 @@
 # .spacemacs.d
 
-spacemacs configuration.
+config of spacemacs. place at `~/.spacemacs.d`.
 
-the file `init.el` should be located to `~/.spacemacs.d/`, while
-[spacemacs itself](https://github.com/syl20bnr/spacemacs) at `~/.emacs.d`.
+for upstream package repository uses the [tuna][tuna] mirror.
 
-## details
+## Requirement
 
-I'm using develop branch of spacemacs.
+### path executable
 
-the package source is configured to [tuna](https://mirrors.tuna.tsinghua.edu.cn).
+- haskell
+  - `apply-refact`
+  - `hlint`
+  - `stylish-haskell`
+  - `hasktags`
+  - `hoogle`
 
+[tuna]: https://mirrors.tuna.tsinghua.edu.cn
