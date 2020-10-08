@@ -6,7 +6,7 @@
    dotspacemacs-distribution 'spacemacs
 
    dotspacemacs-enable-lazy-installation 'all
-   dotspacemacs-ask-for-lazy-installation t
+   dotspacemacs-ask-for-lazy-installation nil
 
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-configuration-layers
@@ -14,7 +14,9 @@
      ;; languages, or major modes
 
      agda
-     assembly
+     (asm :location local
+          :variables
+          tab-width 8)
      c-c++
      (coq :variables
           coq-compile-before-require t
@@ -29,6 +31,10 @@
      lean
      markdown
      org
+     (python :variables
+             python-format-on-save t
+             python-sort-imports-on-save t
+             )
      racket
      ruby
      rust
@@ -72,7 +78,7 @@
    dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
-   dotspacemacs-install-packages 'used-only
+   dotspacemacs-install-packages 'all
    ))
 
 (defun dotspacemacs/init ()
@@ -82,7 +88,7 @@
    dotspacemacs-emacs-pdumper-executable-file "emacs-28.0.50"
    dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
 
-   dotspacemacs-use-spacelpa nil
+   dotspacemacs-use-spacelpa t
    dotspacemacs-verify-spacelpa-archives nil
 
    dotspacemacs-elpa-https t
@@ -156,7 +162,7 @@
    dotspacemacs-maximized-at-startup nil
 
    dotspacemacs-active-transparency 70
-   dotspacemacs-inactive-transparency 60
+   dotspacemacs-inactive-transparency 70
    dotspacemacs-show-transient-state-title t
 
    ;; If non-nil show the color guide hint for transient state keys. (default t)
@@ -203,11 +209,11 @@ See the header of this file for more information."
 (defun dotspacemacs/user-init ()
 
    ;; configure mirror server
-   (setq configuration-layer-elpa-archives
-        '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/melpa-stable/")
-          ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+   ;; (setq configuration-layer-elpa-archives
+   ;;      '(("melpa" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+   ;;        ("melpa-stable" . "https://mirrors.tuna.tsinghua.edu.cn/melpa-stable/")
+   ;;        ("org"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+   ;;        ("gnu"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
    ;; don't warn some deprecated packages.
    ;; `cl' is deprecated after emacs 27 because`cl-lib' is a better alt.

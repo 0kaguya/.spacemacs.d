@@ -1,8 +1,8 @@
 # .spacemacs.d
 
-config of spacemacs. place at `~/.spacemacs.d`.
+config of spacemacs. place it at `~/.spacemacs.d`.
 
-for upstream package repository uses the [tuna][tuna] mirror.
+uncomment lines in `spacemacs/user-init` to set the [tuna][tuna] mirror.
 
 ## Requirement
 
@@ -10,9 +10,18 @@ for upstream package repository uses the [tuna][tuna] mirror.
 
 - haskell
   - `apply-refact`
-  - `hlint`
-  - `stylish-haskell`
   - `hasktags`
+  - `hlint`
   - `hoogle`
+  - `stylish-haskell`
+  
+- python
+  - `autoflake`
+  - `flake8`
+  - `isort`
+  - `jedi`
+  - `json-rpc`
+  - `service_factory`
+  - `yapf` 
 
 [tuna]: https://mirrors.tuna.tsinghua.edu.cn
