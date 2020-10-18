@@ -232,9 +232,12 @@ dump."
 
 (defun dotspacemacs/user-config ()
 
-  ;; recommended shortkeys by org-mode.
-  (with-eval-after-load 'org
-    (local-set-key "\C-cb" 'org-switchb))
+  (add-hook 'org-mode-hook
+            (lambda ()
+              ;; recommended shortkeys by org-mode.
+              (local-set-key "\C-cb" 'org-switchb)
+              ;; always wrap lines in ord-mode.
+              (spacemacs/toggle-truncate-lines-off)))
 
   ;; modifying some ex-commands.
   (evil-ex-define-cmd "q" 'spacemacs/kill-this-buffer)
