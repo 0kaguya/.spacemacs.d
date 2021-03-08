@@ -10,74 +10,103 @@
 
    dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
    dotspacemacs-configuration-layers
-   '(
-     ;; languages, or major modes
-
-     agda
-     (asm :location local
-          :variables
-          tab-width 8)
-     c-c++
-     (coq :variables
-          coq-compile-before-require t
-          )
-     emacs-lisp
-     erlang
-     (haskell :variables
-              haskell-completion-backend 'dante
-              haskell-enable-hindent t
-              )
-     json
-     lean
-     markdown
-     org
-     (python :variables
-             python-format-on-save t
-             python-sort-imports-on-save t
-             )
-     racket
-     ruby
-     rust
-     (scheme :variables
-             geiser-chez-binary "scheme"
-             geiser-active-implementations '(chez)
-             geiser-mode-start-repl-p t
-             geiser-repl-query-on-kill-p nil
-             geiser-mode-eval-last-sexp-to-buffer t
-             geiser-mode-eval-to-buffer-prefix "\n;;=> "
-             )
-
-     ;; checking and completions
+   '(html
+     ;;; checking and completions
 
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       ;; auto-completion-enable-help-tooltip t
                       auto-completion-complete-with-key-sequence (kbd "jk")
                       )
-     helm
+     gtags ;; dependency.
+     ;; helm
+     ivy
      (spell-checking :variables
                      spell-checking-enable-by-default nil
                      enable-flyspell-auto-completion t
                      )
      syntax-checking
 
-     ;; editor features
+     ;;; editor features
 
      ;; better-defaults
      git
+
+     (lsp :variables
+          lsp-rust-server 'rust-analyzer)
+
      ;; multiple-cursors
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
             )
+     smex ;; ivy need smex.
      themes-megapack
      treemacs
      version-control
+
+     ;;; languages, or major modes
+
+     agda
+     (asm :location local
+          :variables
+          tab-width 8)
+     ;; asm
+     (c-c++ :variables
+            c-c++-backend 'lsp-clangd
+            c-c++-enable-clang-support t)
+     (coq :variables
+          coq-compile-before-require t
+          )
+     emacs-lisp
+     (erlang :variables
+             erlang-man-root-dir "/usr/lib/erlang/man"
+             erlang-backend 'lsp)
+     (haskell :variables
+              haskell-completion-backend 'dante
+              ;; haskell-enable-hindent t ;; `hindent' is broken now
+              )
+     json
+     lean
+     markdown
+     (nix :location local)
+     ocaml
+     (org :variables
+          org-pretty-entities t
+          )
+     (python :variables
+             python-format-on-save t
+             python-sort-imports-on-save t
+             )
+     racket
+     ruby
+     (rust :variables:
+           rust-backend 'lsp)
+     ;; Unfortunately geiser does not work well with racket-mode
+     ;; (scheme :variables
+     ;;         geiser-chez-binary "scheme"
+     ;;         geiser-active-implementations '(chez)
+     ;;         geiser-mode-start-repl-p t
+     ;;         geiser-repl-query-on-kill-p nil
+     ;;         geiser-mode-eval-last-sexp-to-buffer t
+     ;;         geiser-mode-eval-to-buffer-prefix "\n;;=> "
+     ;;         )
+     shell-scripts
+     (verilog :location local)
+
      )
 
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+                                      (bison-mode :location
+                                                  (recipe :fetcher
+                                                          github
+                                                          :repo
+                                                          "Wilfred/bison-mode"))
+                                      )
    dotspacemacs-frozen-packages '()
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(
+                                    evil-magit
+                                    )
    dotspacemacs-install-packages 'all
    ))
 
@@ -219,7 +248,7 @@ See the header of this file for more information."
    ;; `cl' is deprecated after emacs 27 because`cl-lib' is a better alt.
    (setq byte-compile-warnings '(cl-functions))
 
-   ;; avoid auto generated settings written into this file.
+   ;; avoid auto-generated settings to write into this file.
    (setq custom-file "~/.emacs.d/.cache/.custom-settings")
   )
 
@@ -236,7 +265,7 @@ dump."
             (lambda ()
               ;; recommended shortkeys by org-mode.
               (local-set-key "\C-cb" 'org-switchb)
-              ;; always wrap lines in ord-mode.
+              ;; always wrap lines in org-mode.
               (spacemacs/toggle-truncate-lines-off)))
 
   ;; modifying some ex-commands.
@@ -248,6 +277,8 @@ dump."
   ;; (with-eval-after-load 'company-coq
   ;;   (add-to-list 'company-coq-disabled-features 'prettify-symbols))
 
+  ;; UI Setting
+
   ;; disable line hightlighting
   (spacemacs/toggle-highlight-current-line-globally-off)
 
@@ -257,3 +288,4 @@ dump."
             (lambda (frame)
               (spacemacs/toggle-transparency frame)))
   )
+;; generated config located at ~/.emacs.d/.cache/.custom-settings
