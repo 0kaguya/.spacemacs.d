@@ -67,6 +67,7 @@
               ;; haskell-enable-hindent t ;; `hindent' is broken now
               )
      json
+     (julia :location local)
      lean
      markdown
      (nix :location local)
